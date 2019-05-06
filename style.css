@@ -1,0 +1,87 @@
+/* ==== Styling for Calendar Stuff ==== */
+.main-wrapper {
+    width:75%;
+    max-width:600px;
+    margin: auto;
+}
+
+.calendar {
+  margin:auto;
+}
+
+.weekDay {
+  text-align:center;
+}
+
+.weekDay:hover {
+  background-color: grey;
+}
+
+.cell {
+  text-align:center;
+}
+
+.cell:hover {
+  background-color:grey;
+}
+
+.btn {
+}
+
+.btn-secondary{
+    height:60px;
+    width:100%;
+}
+
+#PrevMonth {
+    padding:0;
+}
+
+#NextMonth {
+    padding:0;
+}
+
+/* ==== Styling for the Input fields ==== */
+
+.reminder {
+    margin-top: 20px;
+}
+
+.NotificationHeader {
+    text-align: center;
+}
+
+#SelectDay {
+    display:inline-block;
+}
+
+#EnterText {
+    display:inline-block;
+    float:right;
+}
+
+#SaveNoteBtn {
+    display:block;
+    width:100%;
+
+}
+
+/* ==== Styling for ToolTip related Stuff ==== */
+.notify {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background-color: black;
+  position:absolute;
+  margin-left:4%;
+}
+
+.tool {
+  background-color:white;
+}
+
+#BtnRemove {
+    float:right;
+    margin-bottom:10px;
+    margin-top:-5px;
+}

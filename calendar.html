@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Calendar</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="calendar.js"></script>
+  </head>
+  <body>
+      <div class="main-wrapper">
+          <table class="table table-bordered calendar">
+              <thead class="th-light">
+                <tr class="CalendarHeading table-info">
+                    <td class="cell" id="PrevMonth" colspan="2"><button class="btn btn-secondary" onclick="Calendar.prevMonth()">&#8249;</button></td>
+                    <td class="cell" colspan="3" id="CalendarHeading"></td>
+                    <td class="cell" id="NextMonth" colspan="2"><button class="btn btn-secondary" onclick="Calendar.nextMonth()">&#8250;</button></td>
+                </tr>
+            </thead>
+            <!-- The sector for the WeekDays in the Table Heading -->
+            <tr>
+                <th class="weekDay" id="WeekDay0"></th>
+                <th class="weekDay" id="WeekDay1"></th>
+                <th class="weekDay" id="WeekDay2"></th>
+                <th class="weekDay" id="WeekDay3"></th>
+                <th class="weekDay" id="WeekDay4"></th>
+                <th class="weekDay" id="WeekDay5"></th>
+                <th class="weekDay" id="WeekDay6"></th>
+            </tr>
+            <!-- The sector for the Days in the Calendar Cells -->
+            <tr>
+                <td class="cell" id="nr0"></td>
+                <td class="cell" id="nr1"></td>
+                <td class="cell" id="nr2"></td>
+                <td class="cell" id="nr3"></td>
+                <td class="cell" id="nr4"></td>
+                <td class="cell" id="nr5"></td>
+                <td class="cell" id="nr6"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="nr7"></td>
+                <td class="cell" id="nr8"></td>
+                <td class="cell" id="nr9"></td>
+                <td class="cell" id="nr10"></td>
+                <td class="cell" id="nr11"></td>
+                <td class="cell" id="nr12"></td>
+                <td class="cell" id="nr13"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="nr14"></td>
+                <td class="cell" id="nr15"></td>
+                <td class="cell" id="nr16"></td>
+                <td class="cell" id="nr17"></td>
+                <td class="cell" id="nr18"></td>
+                <td class="cell" id="nr19"></td>
+                <td class="cell" id="nr20"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="nr21"></td>
+                <td class="cell" id="nr22"></td>
+                <td class="cell" id="nr23"></td>
+                <td class="cell" id="nr24"></td>
+                <td class="cell" id="nr25"></td>
+                <td class="cell" id="nr26"></td>
+                <td class="cell" id="nr27"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="nr28"></td>
+                <td class="cell" id="nr29"></td>
+                <td class="cell" id="nr30"></td>
+                <td class="cell" id="nr31"></td>
+                <td class="cell" id="nr32"></td>
+                <td class="cell" id="nr33"></td>
+                <td class="cell" id="nr34"></td>
+            </tr>
+            <tr id="LastRow">
+                <td class="cell" id="nr35"></td>
+                <td class="cell" id="nr36"></td>
+                <td class="cell" id="nr37"></td>
+                <td class="cell" id="nr38"></td>
+                <td class="cell" id="nr39"></td>
+                <td class="cell" id="nr40"></td>
+                <td class="cell" id="nr41"></td>
+            </tr>
+          </table>
+          <script>
+              Calendar.fillCalendar();
+              window.addEventListener("DOMContenLoaded",Note.getNotes());
+              window.addEventListener("DOMContenLoaded",Note.createNotification());
+              window.addEventListener("DOMContenLoaded",Note.createToolTip());
+			  highlightToday();
+          </script>
+          <div class="reminder">
+            <p class="NotificationHeader">Create a Notification</p>
+            <div id="SelectDay">
+                <label>Select the Day:</label>
+                <select id="SelectedDay">
+                      <script>Note.createDaySelector();</script>
+                </select>
+            </div>
+            <div id="EnterText">
+                <label>Create a Note:</label>
+                <input type="text" id="NotifyText" name="NotifyText" onclick="Note.clearInput()" value="Enter Text">
+            </div>
+            <button id="SaveNoteBtn" class="btn btn-primary" onclick="Note.saveNote()">Save Note</button><br>
+            <p class="NotificationHeader">Remove a Notification</p>
+            <div id="NotificationSelector">
+                <label>Select Notification:</label>
+                <button class="btn btn-primary" id="BtnRemove" onclick="Note.removeNote();">Remove Note</button>
+                <script>Note.notificationSelector();</script>
+            </div>
+          </div>
+      </div>
+  </body>
+</html>
