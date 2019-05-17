@@ -19,6 +19,7 @@
 
 .cell {
   text-align:center;
+  width: 100px;
 }
 
 .cell:hover {
@@ -72,12 +73,16 @@
   height:8px;
   border-radius:50%;
   background-color: black;
-  position:absolute;
-  margin-left:4%;
+  position:relative;
+  display: inline-block;
+  top:10px;
+  left: 15px;
 }
 
 .tool {
   background-color:white;
+  position: absolute;
+  display: none;
 }
 
 #BtnRemove {

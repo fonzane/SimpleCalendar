@@ -5,16 +5,15 @@
     <title>Simple Calendar</title>
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="calendar.js"></script>
-  </head>
-  <body>
-      <div class="main-wrapper">
-          <table class="table table-bordered calendar">
-              <thead class="th-light">
+</head>
+<body>
+    <div class="main-wrapper">
+        <table class="table table-bordered calendar">
+            <thead class="th-light">
                 <tr class="CalendarHeading table-info">
-                    <td class="cell" id="PrevMonth" colspan="2"><button class="btn btn-secondary" onclick="Calendar.prevMonth()">&#8249;</button></td>
+                    <td class="cell" id="PrevMonth" colspan="2"><button class="btn btn-secondary">&#8249;</button></td>
                     <td class="cell" colspan="3" id="CalendarHeading"></td>
-                    <td class="cell" id="NextMonth" colspan="2"><button class="btn btn-secondary" onclick="Calendar.nextMonth()">&#8250;</button></td>
+                    <td class="cell" id="NextMonth" colspan="2"><button class="btn btn-secondary">&#8250;</button></td>
                 </tr>
             </thead>
             <!-- The sector for the WeekDays in the Table Heading -->
@@ -82,34 +81,28 @@
                 <td class="cell" id="nr40"></td>
                 <td class="cell" id="nr41"></td>
             </tr>
-          </table>
-          <script>
-              Calendar.fillCalendar();
-              window.addEventListener("DOMContenLoaded",Note.getNotes());
-              window.addEventListener("DOMContenLoaded",Note.createNotification());
-              window.addEventListener("DOMContenLoaded",Note.createToolTip());
-			  highlightToday();
-          </script>
-          <div class="reminder">
-            <p class="NotificationHeader">Create a Notification</p>
+        </table>
+        <div class="reminder">
+            <p class="NotificationHeader">Eine Notiz hinzufügen</p>
             <div id="SelectDay">
-                <label>Select the Day:</label>
+                <label>Wähle den Tag:</label>
                 <select id="SelectedDay">
-                      <script>Note.createDaySelector();</script>
                 </select>
             </div>
             <div id="EnterText">
-                <label>Create a Note:</label>
-                <input type="text" id="NotifyText" name="NotifyText" onclick="Note.clearInput()" value="Enter Text">
+                <label>Text eingeben:</label>
+                <input type="text" id="NotifyText" name="NotifyText" placeholder="Text">
             </div>
-            <button id="SaveNoteBtn" class="btn btn-primary" onclick="Note.saveNote()">Save Note</button><br>
-            <p class="NotificationHeader">Remove a Notification</p>
+            <button id="SaveNoteBtn" class="btn btn-primary">Notiz speichern</button><br>
             <div id="NotificationSelector">
-                <label>Select Notification:</label>
-                <button class="btn btn-primary" id="BtnRemove" onclick="Note.removeNote();">Remove Note</button>
-                <script>Note.notificationSelector();</script>
+                <p class="NotificationHeader">Eine Notiz entfernen</p>
+                <label>Notiz auswählen:</label>
+                <select id="remove-note"></select>
+                <button class="btn btn-primary" id="BtnRemove">Notiz löschen</button>
             </div>
-          </div>
-      </div>
-  </body>
+        </div>
+    </div>
+    <script src="calendar.js"></script>
+    <script src="notes.js"></script>
+</body>
 </html>
