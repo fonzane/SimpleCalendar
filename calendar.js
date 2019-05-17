@@ -87,8 +87,26 @@
     function saveNote() {
         const text = document.getElementById("NotifyText").value;
         const noteDate = document.getElementById("SelectedDay").value + "." + month + "." + year;
-        
-        // TODO: Handle double entries and invalid chars
+
+        if(specialCharsMatch(text)) {
+            alert("Sonderzeichen sind nicht erlaubt.");
+            return;
+        }
+
+        for(let i = 0; i < noteCount; i++) {
+            
+            try {
+                const existingNoteDate = localStorage.getItem("note"+i).split(",")[1];
+    
+                if(existingNoteDate === noteDate) {
+                    alert("Bitte nur einen Eintrag pro Tag.");
+                    return;
+                }
+            } catch {
+                continue;
+            }
+        }
+
         localStorage.setItem("note" + noteCount, text + "," + noteDate);
         noteCount++;
         localStorage.setItem("noteCount", noteCount);
@@ -128,6 +146,14 @@
                     notify.addEventListener("mouseleave", function() {
                         document.getElementById(noteDay).style.display = "none";
                     });
+                    // notify.parentNode.addEventListener("click", function() {
+                    //     const tool = document.getElementById(noteDay);
+                    //     if(tool.style.display === "none") {
+                    //         tool.style.display = "block";
+                    //     } else {
+                    //         tool.style.display = "none";
+                    //     }
+                    // })
     
                     let tool = document.createElement("p");
                     tool.innerHTML = noteText;
@@ -162,8 +188,10 @@
             try {
                 const note = localStorage.getItem("note"+i);
                 const noteText = note.split(",")[0];
+                const noteDate = note.split(",")[1].split(".")[1] + "." + note.split(",")[1].split(".")[2];
+                const localDate = `${month}.${year}`;
     
-                if(removeText === noteText) {
+                if(removeText === noteText && noteDate === localDate) {
                     localStorage.removeItem("note"+i);
                     fillCalendar(year, month, day);
                 }
@@ -176,3 +204,13 @@
     document.getElementById("BtnRemove").addEventListener("click", removeNote);
 
 })();
+
+function specialCharsMatch(string) {
+    const letters = /^[a-z0-9 ]+$/i;
+
+    if(string.match(letters)) {
+        return false;
+    } else {
+        return true;
+    }
+}
